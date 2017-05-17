@@ -1,1 +1,0 @@
-read inet_addr and resolve problem on view client address
