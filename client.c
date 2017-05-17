@@ -12,17 +12,17 @@ int main(){
 	//socket initialization 
 	struct sockaddr_in addrport; 
 	addrport.sin_family = AF_INET;	
-	addrport.sin_addr = inet_aton("127.0.0.1", &addrport);
+	addrport.sin_addr.s_addr = inet_addr("127.0.0.1");
 	addrport.sin_port = htons(80);
 
 	struct sockaddr_in myaddr; 
 	myaddr.sin_family = AF_INET; 
-	myaddr.sin_addr = inet_aton("192.168.1.102", &myaddr);
+	myaddr.sin_addr.s_addr = inet_addr("192.168.1.102");
 
 	if((bind(sid, (struct sockaddr*) &myaddr, sizeof(myaddr)) ) < 0){
 		printf("error %s\n", strerror(errno));
 	}
-
+	printf("Binded to %s\n", inet_ntoa(myaddr.sin_addr));
 	//connection
 	if(connect(sid, (struct sockaddr*) &addrport, sizeof(addrport)) < 0)
 		printf("error connect %s\n", strerror(errno));

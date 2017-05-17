@@ -24,7 +24,7 @@ int main(){
 	}
 
 	errno = 0;
-	if(listen(sid, MAX_PENDING < 0)){
+	if(listen(sid, MAX_PENDING )< 0){
 		printf("error in listening %s\n", strerror(errno));
 		return -1;
 	}
@@ -60,7 +60,6 @@ int main(){
 		printf("message replied\n");
 		close(client_sock);
 		printf("socket close\n");
-
 	}
 	return 0;
 }
